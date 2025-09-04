@@ -10,71 +10,57 @@ const [comments, setComments] = useState(null);
 
 
 
-// useEffect  (()=>{//fetch data from API -- use effect is used for changes in the ui
-//     fetch('http://localhost:9000/lists')
-//         .then(
-//             res =>{
-//                 return res.json();
-//             }
-//         //this is a 2 step process 
-//         //first we get the res --response object 
-//         ///this also returns a promise 
-//         //so we use another then ---- the data we get is the json data from res.json 
-//         //we use that data to change the state of lists
-//         )
-//         .then(data => {
-//             setLists(data);
-//         })
-// },[])//empty dependency array so that it runs only once when the component loads
+useEffect  (()=>{//fetch data from API -- use effect is used for changes in the ui
+    fetch('http://localhost:9000/lists')
+        .then(
+            res =>{
+                return res.json();
+            }
+        //this is a 2 step process 
+        //first we get the res --response object 
+        ///this also returns a promise 
+        //so we use another then ---- the data we get is the json data from res.json 
+        //we use that data to change the state of lists
+        )
+        .then(data => {
+            setLists(data);
+        })
+},[])//empty dependency array so that it runs only once when the component loads
 
 
 
 
-// //this is for comments
-// useEffect  (()=>{//fetch data from API -- use effect is used for changes in the ui
-//     fetch('http://localhost:9001/comments')
-//         .then(
-//             res =>{
-//                 return res.json();
-//             }
-//         //this is a 2 step process 
-//         //first we get the res --response object 
-//         ///this also returns a promise 
-//         //so we use another then ---- the data we get is the json data from res.json 
-//         //we use that data to change the state of lists
-//         )
-//         .then(data => {
-//              setComments(data);
+//this is for comments
+useEffect  (()=>{//fetch data from API -- use effect is used for changes in the ui
+    fetch('http://localhost:9001/comments')
+        .then(
+            res =>{
+                return res.json();
+            }
+        //this is a 2 step process 
+        //first we get the res --response object 
+        ///this also returns a promise 
+        //so we use another then ---- the data we get is the json data from res.json 
+        //we use that data to change the state of lists
+        )
+        .then(data => {
+             setComments(data);
             
-//             // console.log(       
-//             // comments &&
-//             //         comments
-//             //           .filter(comment => comment.postId === lists.id)
-//             //           .map(comment => (
-//             //             <h4 key={comment.id}>{comment.body}</h4>
-//             //           ))
+            // console.log(       
+            // comments &&
+            //         comments
+            //           .filter(comment => comment.postId === lists.id)
+            //           .map(comment => (
+            //             <h4 key={comment.id}>{comment.body}</h4>
+            //           ))
             
-// // );
-//                     })
-// },[lists])//empty dependency array so that it runs only once when the component loads
-
-useEffect(() => {
-        fetch("https://jsonplaceholder.typicode.com/posts")
-        .then(response => response.json())
-        .then(data => {setLists(data)})
-        .catch(error => console.error(error))
- 
-    }, [])
+// );
+                    })
+},[lists])//empty dependency array so that it runs only once when the component loads
 
 
 
-    useEffect(() => {
 
-        fetch("https://jsonplaceholder.typicode.com/comments")
-        .then(response => response.json())
-        .then(data => setComments(data))
-        .catch(error => console.error(error))
-    }, [])
 
     return (
     <div className="list">
