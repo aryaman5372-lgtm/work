@@ -1,0 +1,160 @@
+body {
+  background-color: #202c37;
+  margin: 0;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.app-container {
+  background-color: #202c37;
+  min-height: 100vh;
+  color: white;
+}
+
+.search-filter-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 2rem;
+}
+
+.search-container {
+  position: relative;
+  flex: 1;
+  max-width: 400px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 1rem 1rem 1rem 3rem;
+  background-color: #2b3945;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 9px rgba(0, 0, 0, 0.1);
+}
+
+.search-input::placeholder {
+  color: #848484;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #848484;
+}
+
+.filter-dropdown {
+  padding: 1rem 1.5rem;
+  background-color: #2b3945;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+  box-shadow: 0 2px 9px rgba(0, 0, 0, 0.1);
+  min-width: 200px;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 2.5rem;
+  padding: 0 2rem 2rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.country-card {
+  background: #2b3945;
+  border-radius: 5px;
+  box-shadow: 0 0 7px 2px rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.country-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.flag-container {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+}
+
+.flag-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+.country-name {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  color: #ffffff;
+}
+
+.country-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.country-info p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #ffffff;
+  line-height: 1.6;
+}
+
+.info-label {
+  font-weight: 600;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .search-filter-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  
+  .search-container {
+    max-width: none;
+  }
+  
+  .cards-container {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 0 1rem 2rem 1rem;
+  }
+  
+  .card-content {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+    padding: 0 1rem 2rem 1rem;
+  }
+  
+  .search-filter-container {
+    padding: 1rem;
+  }
+}
