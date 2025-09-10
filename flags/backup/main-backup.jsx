@@ -13,7 +13,7 @@ createRoot(document.getElementById('root')).render(
     <DarkModeProvider>
       <Navbar/>
       <Card/>
-      <Countrypage/>
+      {/* <Countrypage/> */}
     {/* <Page/> */}
     <p>fdf
 

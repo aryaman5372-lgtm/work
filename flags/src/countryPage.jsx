@@ -1,63 +1,136 @@
 
 import { useState, useEffect } from "react"
-const Countrypage= () => {
+import "./countryPage.css"
 
+const Countrypage = () => {
+    const [flag, setFlag] = useState(null)
+    const [loading, setLoading] = useState(true)
 
-    const [flag,setFlag]=useState(null)
-useEffect(() => {
-
-            fetch("https://restcountries.com/v3.1/independent?status=true")
-           // fetch("https://restcountries.com/v3.1/all")
-
-        .then(response => response.json())
-        .then(data => {setFlag(data)
-            console.log(data);
-            
-        }
-    )
-        .catch(error => console.error(error))
+    useEffect(() => {
+        fetch("https://restcountries.com/v3.1/independent?status=true")
+            .then(response => response.json())
+            .then(data => {
+                setFlag(data)
+                setLoading(false)
+                console.log(data);
+            })
+            .catch(error => {
+                console.error(error)
+                setLoading(false)
+            })
     }, [])
 
+    const formatNumber = (num) => {
+        return new Intl.NumberFormat().format(num)
+    }
 
+    const getCurrencies = (currencies) => {
+        if (!currencies) return 'N/A'
+        return Object.values(currencies).map(currency => currency.name).join(', ')
+    }
 
-    
-    return (  
-    <div>
-        {flag && flag.map(
-            (item, idx) => (
-                <div key={item.cca3 || idx} style={{ marginBottom: '2rem' }}>
-                    <img src={item.flags?.png || item.flags?.svg} alt={item.name?.common + ' flag'} style={{ width: '100px', height: 'auto', display: 'block' }} />
-                    <h4>Name: {item.name?.common}</h4>
-                    <div className="firsthalf">
+    const getLanguages = (languages) => {
+        if (!languages) return 'N/A'
+        return Object.values(languages).join(', ')
+    }
 
-                    <h4>Native  Name: {item.name?.common}</h4>
-                    <h4>Population:           {item.population}</h4>
-                    <h4>Region:           {item.region}</h4>
-                    <h4>Sub Region: {item.subregion}</h4>
-                    <h4>Capital:           {item.capital}</h4>
+    const getNativeName = (nativeNames) => {
+        if (!nativeNames) return 'N/A'
+        const firstKey = Object.keys(nativeNames)[0]
+        return nativeNames[firstKey]?.common || 'N/A'
+    }
 
+    const handleBackClick = () => {
+        // You can implement navigation logic here
+        window.history.back()
+    }
+
+    if (loading) {
+        return (
+            <div className="country-page">
+                <div className="loading">Loading country information...</div>
+            </div>
+        )
+    }
+
+    return (
+        <div className="country-page">
+            <button className="back-button" onClick={handleBackClick}>
+                <span>←</span> Back
+            </button>
+
+            {flag && flag
+                .filter(item => item?.name?.common === "Jamaica")
+                .map((item, idx) => (
+                    <div key={item.cca3 || idx} className="country-content">
+                        <div className="flag-section">
+                            <img 
+                                src={item.flags?.png || item.flags?.svg} 
+                                alt={item.name?.common + ' flag'} 
+                                className="country-flag"
+                            />
+                        </div>
+
+                        <div className="details-section">
+                            <h1 className="country-name">{item.name?.common}</h1>
+                            
+                            <div className="country-details">
+                                <div className="firsthalf">
+                                    <div className="detail-item">
+                                        <span className="detail-label">Native Name:</span>
+                                        <span className="detail-value">{getNativeName(item.name?.nativeName)}</span>
+                                    </div>
+                                    <div className="detail-item">
+                                        <span className="detail-label">Population:</span>
+                                        <span className="detail-value">{formatNumber(item.population)}</span>
+                                    </div>
+                                    <div className="detail-item">
+                                        <span className="detail-label">Region:</span>
+                                        <span className="detail-value">{item.region}</span>
+                                    </div>
+                                    <div className="detail-item">
+                                        <span className="detail-label">Sub Region:</span>
+                                        <span className="detail-value">{item.subregion}</span>
+                                    </div>
+                                    <div className="detail-item">
+                                        <span className="detail-label">Capital:</span>
+                                        <span className="detail-value">{item.capital?.[0] || 'N/A'}</span>
+                                    </div>
+                                </div>
+
+                                <div className="secondhalf">
+                                    <div className="detail-item">
+                                        <span className="detail-label">Top Level Domain:</span>
+                                        <span className="detail-value">{item.tld?.[0] || 'N/A'}</span>
+                                    </div>
+                                    <div className="detail-item">
+                                        <span className="detail-label">Currencies:</span>
+                                        <span className="detail-value">{getCurrencies(item.currencies)}</span>
+                                    </div>
+                                    <div className="detail-item">
+                                        <span className="detail-label">Languages:</span>
+                                        <span className="detail-value">{getLanguages(item.languages)}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {item.borders && item.borders.length > 0 && (
+                                <div className="border-countries">
+                                    <span className="border-countries-label">Border Countries:</span>
+                                    <div className="border-countries-list">
+                                        {item.borders.map((border, index) => (
+                                            <button key={index} className="border-country-tag">
+                                                {border}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
                     </div>
-                    <div className="secondhalf">
-
-                    <h4>Top Level Domain :           {item.tld}</h4>
-                    <h4>Currency :           {item.currencies.target   }</h4>
-                    console.log( {item.currencies.target}   );
-                    
-                    {/* <h4>Languages :           {Object.values(item.languages).map((lan)=>(
-                        {if (len.length!=Object.values(item.languages).length-1) {
-                         lan+","    
-                        }
-                    else
-                         lan
-                    }
-                       ))}</h4> */}
-                    </div>
-
-                    {/* <h4>Border  Countries  :           {item.}</h4> */}
-                </div>
-            )
-        )}
-    </div>
+                ))
+            }
+        </div>
     );
 }
  
