@@ -1,16 +1,22 @@
+/* Import Nunito Sans font */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+
 /* Country Page Styles */
 .country-page {
   min-height: 100vh;
   padding: 2rem 4rem;
-  background-color: #fafafa;
-  color: #111517;
+  background-color: hsl(0, 0%, 99%); /* Grey 50 - Light Mode Background */
+  color: hsl(200, 15%, 8%); /* Grey 950 - Light Mode Text */
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px; /* Detail Page font size */
+  font-weight: 300;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Dark mode styles */
 body.dark-mode .country-page {
-  background-color: #202c37;
-  color: #ffffff;
+  background-color: hsl(207, 26%, 17%); /* Blue 950 - Dark Mode Background */
+  color: hsl(0, 100%, 100%); /* White - Dark Mode Text */
 }
 
 /* Back button */
@@ -18,14 +24,15 @@ body.dark-mode .country-page {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: #ffffff;
-  color: #111517;
+  background-color: hsl(0, 100%, 100%); /* White - Light Mode Elements */
+  color: hsl(200, 15%, 8%); /* Grey 950 - Light Mode Text */
   border: none;
   padding: 0.75rem 2rem;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 16px;
   font-weight: 600;
+  font-family: 'Nunito Sans', sans-serif;
   margin-bottom: 4rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
@@ -37,12 +44,12 @@ body.dark-mode .country-page {
 }
 
 body.dark-mode .back-button {
-  background-color: #2b3945;
-  color: #ffffff;
+  background-color: hsl(209, 23%, 22%); /* Blue 900 - Dark Mode Elements */
+  color: hsl(0, 100%, 100%); /* White - Dark Mode Text */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-.back-button:hover.dark-mode {
+body.dark-mode .back-button:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
@@ -83,12 +90,13 @@ body.dark-mode .country-flag {
 .country-name {
   font-size: 2.5rem;
   font-weight: 800;
+  font-family: 'Nunito Sans', sans-serif;
   margin-bottom: 2rem;
-  color: #111517;
+  color: hsl(200, 15%, 8%); /* Grey 950 - Light Mode Text */
 }
 
 body.dark-mode .country-name {
-  color: #ffffff;
+  color: hsl(0, 100%, 100%); /* White - Dark Mode Text */
 }
 
 /* Country details grid */
@@ -105,21 +113,23 @@ body.dark-mode .country-name {
 
 .detail-label {
   font-weight: 600;
-  color: #111517;
+  font-family: 'Nunito Sans', sans-serif;
+  color: hsl(200, 15%, 8%); /* Grey 950 - Light Mode Text */
   margin-right: 0.5rem;
 }
 
 body.dark-mode .detail-label {
-  color: #ffffff;
+  color: hsl(0, 100%, 100%); /* White - Dark Mode Text */
 }
 
 .detail-value {
   font-weight: 300;
-  color: #858585;
+  font-family: 'Nunito Sans', sans-serif;
+  color: hsl(200, 15%, 8%); /* Grey 950 - Light Mode Text */
 }
 
 body.dark-mode .detail-value {
-  color: #ffffff;
+  color: hsl(0, 100%, 100%); /* White - Dark Mode Text */
 }
 
 /* Border countries section */
@@ -129,13 +139,14 @@ body.dark-mode .detail-value {
 
 .border-countries-label {
   font-weight: 600;
+  font-family: 'Nunito Sans', sans-serif;
   margin-bottom: 1rem;
   display: block;
-  color: #111517;
+  color: hsl(200, 15%, 8%); /* Grey 950 - Light Mode Text */
 }
 
 body.dark-mode .border-countries-label {
-  color: #ffffff;
+  color: hsl(0, 100%, 100%); /* White - Dark Mode Text */
 }
 
 .border-countries-list {
@@ -145,12 +156,13 @@ body.dark-mode .border-countries-label {
 }
 
 .border-country-tag {
-  background-color: #ffffff;
-  color: #111517;
+  background-color: hsl(0, 100%, 100%); /* White - Light Mode Elements */
+  color: hsl(200, 15%, 8%); /* Grey 950 - Light Mode Text */
   padding: 0.5rem 1.5rem;
   border-radius: 4px;
-  font-size: 0.9rem;
+  font-size: 16px;
   font-weight: 300;
+  font-family: 'Nunito Sans', sans-serif;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: all 0.3s ease;
@@ -164,8 +176,8 @@ body.dark-mode .border-countries-label {
 }
 
 body.dark-mode .border-country-tag {
-  background-color: #2b3945;
-  color: #ffffff;
+  background-color: hsl(209, 23%, 22%); /* Blue 900 - Dark Mode Elements */
+  color: hsl(0, 100%, 100%); /* White - Dark Mode Text */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
@@ -173,7 +185,8 @@ body.dark-mode .border-country-tag:hover {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Responsive design */
+/* Responsive design - Based on style guide specifications */
+/* Large tablets and small desktops */
 @media (max-width: 1024px) {
   .country-page {
     padding: 2rem;
@@ -181,13 +194,21 @@ body.dark-mode .border-country-tag:hover {
   
   .country-content {
     gap: 3rem;
+    max-width: 900px;
   }
   
   .details-section {
     padding-left: 0;
   }
+  
+  .country-flag {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+  }
 }
 
+/* Tablets - transitioning to mobile layout */
 @media (max-width: 768px) {
   .country-page {
     padding: 1.5rem;
@@ -196,11 +217,18 @@ body.dark-mode .border-country-tag:hover {
   .country-content {
     grid-template-columns: 1fr;
     gap: 2rem;
+    max-width: 600px;
   }
   
   .country-details {
     grid-template-columns: 1fr;
     gap: 0.5rem 0;
+  }
+  
+  .country-flag {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
   }
   
   .country-name {
@@ -218,10 +246,11 @@ body.dark-mode .border-country-tag:hover {
   
   .border-country-tag {
     padding: 0.4rem 1rem;
-    font-size: 0.8rem;
+    font-size: 14px;
   }
 }
 
+/* Mobile devices - 375px target from style guide */
 @media (max-width: 480px) {
   .country-page {
     padding: 1rem;
@@ -230,6 +259,13 @@ body.dark-mode .border-country-tag:hover {
   .back-button {
     padding: 0.6rem 1.5rem;
     margin-bottom: 2rem;
+    font-size: 14px;
+  }
+  
+  .country-flag {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
   }
   
   .country-name {
@@ -267,10 +303,12 @@ body.dark-mode .border-country-tag:hover {
   justify-content: center;
   align-items: center;
   min-height: 50vh;
-  font-size: 1.2rem;
-  color: #858585;
+  font-size: 18px;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 600;
+  color: hsl(0, 0%, 50%); /* Grey 400 - Light Mode Input */
 }
 
 body.dark-mode .loading {
-  color: #ffffff;
+  color: hsl(0, 100%, 100%); /* White - Dark Mode Text */
 }

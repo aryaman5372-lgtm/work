@@ -1,4 +1,4 @@
-
+https://www.reddit.com/user/Visual-West-1351/comments/1nebwor/charlie_kirk_getting_shot_real_video_no_blur/
 import { useEffect, useState } from "react";
 const List = () => {
 
