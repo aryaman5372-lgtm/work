@@ -28,6 +28,18 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background: #242424;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+body.dark-mode {
+  background: #242424;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+body:not(.dark-mode) {
+  background: #ffffff;
+  color: #213547;
 }
 
 h1 {
@@ -43,8 +55,19 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
+  color: #fff;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s, background-color 0.25s, color 0.25s;
+}
+
+body:not(.dark-mode) button {
+  background-color: #f9f9f9;
+  color: #213547;
+}
+
+body.dark-mode button {
+  background-color: #1a1a1a;
+  color: #fff;
 }
 button:hover {
   border-color: #646cff;

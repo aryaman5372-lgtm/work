@@ -1,13 +1,32 @@
 body {
-  background-color: #202c37;
   margin: 0;
   font-family: 'Nunito Sans', sans-serif;
+  transition: background-color 0.25s, color 0.25s;
+}
+
+body.dark-mode {
+  background-color: #202c37;
+  color: white;
+}
+
+body:not(.dark-mode) {
+  background-color: #fafafa;
+  color: #111517;
 }
 
 .app-container {
-  background-color: #202c37;
   min-height: 100vh;
+  transition: background-color 0.25s, color 0.25s;
+}
+
+body.dark-mode .app-container {
+  background-color: #202c37;
   color: white;
+}
+
+body:not(.dark-mode) .app-container {
+  background-color: #fafafa;
+  color: #111517;
 }
 
 .search-filter-container {
@@ -29,16 +48,33 @@ body {
 .search-input {
   width: 100%;
   padding: 1rem 1rem 1rem 3rem;
-  background-color: #2b3945;
   border: none;
   border-radius: 5px;
-  color: white;
   font-size: 0.9rem;
   box-shadow: 0 2px 9px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.25s, color 0.25s;
+}
+
+body.dark-mode .search-input {
+  background-color: #2b3945;
+  color: white;
+}
+
+body:not(.dark-mode) .search-input {
+  background-color: #fff;
+  color: #213547;
 }
 
 .search-input::placeholder {
+  transition: color 0.25s;
+}
+
+body.dark-mode .search-input::placeholder {
   color: #848484;
+}
+
+body:not(.dark-mode) .search-input::placeholder {
+  color: #9ca3af;
 }
 
 .search-icon {
@@ -51,14 +87,23 @@ body {
 
 .filter-dropdown {
   padding: 1rem 1.5rem;
-  background-color: #2b3945;
   border: none;
   border-radius: 5px;
-  color: white;
   font-size: 0.9rem;
   cursor: pointer;
   box-shadow: 0 2px 9px rgba(0, 0, 0, 0.1);
   min-width: 200px;
+  transition: background-color 0.25s, color 0.25s;
+}
+
+body.dark-mode .filter-dropdown {
+  background-color: #2b3945;
+  color: white;
+}
+
+body:not(.dark-mode) .filter-dropdown {
+  background-color: #fff;
+  color: #213547;
 }
 
 .cards-container {
@@ -70,13 +115,23 @@ body {
   margin: 0 auto;
 }
 
+/* Card styles for dark and light mode */
 .country-card {
-  background: #2b3945;
   border-radius: 5px;
   box-shadow: 0 0 7px 2px rgba(0, 0, 0, 0.03);
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.25s, color 0.25s;
   cursor: pointer;
+}
+
+body.dark-mode .country-card {
+  background: #2b3945;
+  color: #fff;
+}
+
+body:not(.dark-mode) .country-card {
+  background: #fff;
+  color: #213547;
 }
 
 .country-card:hover {
@@ -105,7 +160,15 @@ body {
   font-size: 1.1rem;
   font-weight: 800;
   margin: 0 0 1rem 0;
+  transition: color 0.25s;
+}
+
+body.dark-mode .country-name {
   color: #ffffff;
+}
+
+body:not(.dark-mode) .country-name {
+  color: #111517;
 }
 
 .country-info {
@@ -117,8 +180,16 @@ body {
 .country-info p {
   margin: 0;
   font-size: 0.85rem;
-  color: #ffffff;
   line-height: 1.6;
+  transition: color 0.25s;
+}
+
+body.dark-mode .country-info p {
+  color: #ffffff;
+}
+
+body:not(.dark-mode) .country-info p {
+  color: #111517;
 }
 
 .info-label {
