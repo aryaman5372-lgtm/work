@@ -39,18 +39,19 @@ useEffect(() => {
                     </div>
                     <div className="secondhalf">
 
-                    <h4>Top Level Domain :           {item.tld}</h4>
-                    <h4>Currency :           {item.currencies.target   }</h4>
-                    console.log( {item.currencies.target}   );
-                    
-                    {/* <h4>Languages :           {Object.values(item.languages).map((lan)=>(
-                        {if (len.length!=Object.values(item.languages).length-1) {
-                         lan+","    
-                        }
-                    else
-                         lan
-                    }
-                       ))}</h4> */}
+                                        <h4>Top Level Domain : {item.tld && item.tld.join(', ')}</h4>
+                                        <h4>Currency : {
+                                            item.currencies
+                                                ? Object.values(item.currencies)
+                                                        .map(cur => `${cur.name}${cur.symbol ? ` (${cur.symbol})` : ''}`)
+                                                        .join(', ')
+                                                : 'N/A'
+                                        }</h4>
+                                        <h4>Languages : {
+                                            item.languages
+                                                ? Object.values(item.languages).join(', ')
+                                                : 'N/A'
+                                        }</h4>
                     </div>
 
                     {/* <h4>Border  Countries  :           {item.}</h4> */}
