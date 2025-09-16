@@ -1,7 +1,6 @@
 
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import './card.css'
 
 const Card  = () => {
     const [flag, setFlag] = useState(null)
