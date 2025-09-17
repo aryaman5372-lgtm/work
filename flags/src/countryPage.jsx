@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./countryPage.css";
 const Countrypage = () => {
 	const [flag, setFlag] = useState(null);
 	useEffect(() => {
@@ -11,59 +12,104 @@ const Countrypage = () => {
 				console.log(data);
 			})
 			.catch((error) => console.error(error));
-	}, []);
+	}, []); //!fsf
 
 	return (
-		<div>
+		<div className="country-page">
 			{flag &&
-				flag.map((item, idx) => (
-					<div key={item.cca3 || idx} style={{ marginBottom: "2rem" }}>
-						{" "}
-						<img
-							src={item.flags?.png || item.flags?.svg}
-							alt={item.name?.common + " flag"}
-							style={{ width: "100px", height: "auto", display: "block" }}
-						/>
-						<h4>Name: {item.name?.common}</h4>
-						<div className="firsthalf">
-							<h4>Native Name: {item.name?.common}</h4>
-							<h4>Population: {item.population}</h4>
-							<h4>Region: {item.region}</h4>
-							<h4>Sub Region: {item.subregion}</h4>
-							<h4>Capital: {item.capital}</h4>
+				flag
+					.filter((item) => item.name?.common == "India")
+					.map((item, idx) => (
+						<div key={item.cca3 || idx} className="country-content">
+							{/* //!flag */}
+							<div className="flag-section">
+								<img
+									src={item.flags?.png || item.flags?.svg}
+									alt={item.name?.common + " flag"}
+									className="country-flag"
+								/>
+							</div>
+
+							<div className="details-section">
+								<h1 className="country-name">{item.name?.common}</h1>
+								{/* //!Name */}
+
+								<div className="country-details">
+									<div className="detail-column">
+										<div className="detail-item">
+											<span className="detail-label">Native Name:</span>{" "}
+											<span className="detail-value">{item.name?.common}</span>
+										</div>
+										<div className="detail-item">
+											<span className="detail-label">Population:</span>{" "}
+											<span className="detail-value">
+												{item.population?.toLocaleString()}
+											</span>
+										</div>
+										<div className="detail-item">
+											<span className="detail-label">Region:</span>{" "}
+											<span className="detail-value">{item.region}</span>
+										</div>
+										<div className="detail-item">
+											<span className="detail-label">Sub Region:</span>{" "}
+											<span className="detail-value">{item.subregion}</span>
+										</div>
+										<div className="detail-item">
+											<span className="detail-label">Capital:</span>{" "}
+											<span className="detail-value">{item.capital}</span>
+										</div>
+									</div>
+
+									<div className="detail-column">
+										<div className="detail-item">
+											<span className="detail-label">Top Level Domain:</span>{" "}
+											<span className="detail-value">
+												{item.tld && item.tld.join(", ")}
+											</span>
+										</div>
+										<div className="detail-item">
+											<span className="detail-label">Currency:</span>{" "}
+											<span className="detail-value">
+												{item.currencies
+													? Object.values(item.currencies)
+															.map(
+																(cur) =>
+																	`${cur.name}${
+																		cur.symbol ? ` (${cur.symbol})` : ""
+																	}`
+															)
+															.join(", ")
+													: "N/A"}
+											</span>
+										</div>
+										<div className="detail-item">
+											<span className="detail-label">Languages:</span>{" "}
+											<span className="detail-value">
+												{item.languages
+													? Object.values(item.languages).join(", ")
+													: "N/A"}
+											</span>
+										</div>
+									</div>
+								</div>
+
+								{item.borders && item.borders.length > 0 && (
+									<div className="border-countries">
+										<span className="border-countries-label">
+											Border Countries:
+										</span>
+										<div className="border-countries-list">
+											{item.borders.map((border, i) => (
+												<button key={i} className="border-country-tag">
+													{border}
+												</button>
+											))}
+										</div>
+									</div>
+								)}
+							</div>
 						</div>
-						<div className="secondhalf">
-							<h4>Top Level Domain : {item.tld && item.tld.join(", ")}</h4>
-							<h4>
-								Currency :{" "}
-								{item.currencies
-									? Object.values(item.currencies)
-											.map(
-												(cur) =>
-													`${cur.name}${cur.symbol ? ` (${cur.symbol})` : ""}`
-											)
-											.join(", ")
-									: "N/A"}
-							</h4>
-							<h4>
-								Languages :{" "}
-								{item.languages
-									? Object.values(item.languages).join(", ")
-									: "N/A"}
-							</h4>
-							<h4>
-								Border Countries :{" "}
-								{
-									// item.borders?Array.values(item.borders).map()
-									item.borders && item.borders.length > 0
-										? item.borders.join(", ")
-										: "No border countries"
-				̨				}
-							</h4>
-						</div>
-						{/* <h4>Border  Countries  :           {item.}</h4> */}
-					</div>
-				))}
+					))}
 		</div>
 	);
 };

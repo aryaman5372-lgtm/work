@@ -3,21 +3,9 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import './navbar.css'
 
-import Page from './page'
-import Navbar from './navbar'
-import Card from './card'
-import Countrypage from './countryPage'
+import App from './App'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Navbar/>
-    {/* <Card/> */}
-
-
-    <Countrypage/>
-  {/* <Page/> */}
-  {/* <p>fdf */}
-
-  {/* </p> */}
-  {/* <h1>fsdf</h1> */}
-  </StrictMode>,
+    <App/>  
+ </StrictMode>,
 )
