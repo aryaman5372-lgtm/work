@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
 import "./countryPage.css";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const Countrypage = () => {
 	const [flag, setFlag] = useState(null);
+	const { name } = useParams();
+	const navigate = useNavigate();
 	useEffect(() => {
 		fetch("https://restcountries.com/v3.1/independent?status=true")
 			// fetch("https://restcountries.com/v3.1/all")
@@ -16,9 +20,12 @@ const Countrypage = () => {
 
 	return (
 		<div className="country-page">
+			<button onClick={() => navigate(-1)}>Back</button>
+			<button onClick={() => navigate("/")}>Home</button>
+			{/* <h1>⬅️</h1> */}
 			{flag &&
 				flag
-					.filter((item) => item.name?.common == "India")
+					.filter((item) => item.name?.common === name)
 					.map((item, idx) => (
 						<div key={item.cca3 || idx} className="country-content">
 							{/* //!flag */}

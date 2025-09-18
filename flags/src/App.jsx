@@ -1,7 +1,7 @@
 import Navbar from "./navbar";
 import Countrypage from "./countryPage";
 import Card from "./card";
-import { createBrowserRouter,RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const App = () => {
 	const router = createBrowserRouter([
 		{
@@ -9,7 +9,7 @@ const App = () => {
 			element: <Card />,
 		},
 		{
-			path: "/country",
+			path: "/country/:name",
 			element: <Countrypage />,
 		},
 	]);
@@ -17,8 +17,8 @@ const App = () => {
 	return (
 		<>
 			<Navbar />
-            <RouterProvider router={router}/>
-            {/* <RouterProvider router={router}/> */}
+			<RouterProvider router={router} />
+			{/* <RouterProvider router={router}/> */}
 			{/* <Countrypage /> */}
 			{/* <Card /> */}
 			{/* <Page/> */}
