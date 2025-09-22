@@ -17,7 +17,6 @@ const Card = () => {
 			.catch((error) => console.error(error));
 	}, []);
 
-	// Filter countries based on search term and selected region
 	const filteredCountries = flag?.filter((country) => {
 		const matchesSearch = country.name?.common
 			.toLowerCase()
